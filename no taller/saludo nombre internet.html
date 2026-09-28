@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saludo Nombre</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #5b8def;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background: #3f6fd3; }
+    </style>
+</head>
+<body>
+    <h1>Saludo Nombre</h1>
+    <section>
+        <button onclick="saludar()">¿Cómo te llamas?</button>
+    </section>
+
+    <script>
+        function saludar() {
+            let nombre = prompt("¿como te llamas?");
+            if (nombre && nombre.trim() !== "") {
+                alert(`hola,${nombre}`);
+            } else {
+                alert("no escribiste ningun nombre");
+            }
+        }
+    </script>
+</body>
+</html>

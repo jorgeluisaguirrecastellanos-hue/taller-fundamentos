@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 { margin-top: 0; color: #555; }
+        button {
+            background: #5b8def;
+            color: #fff;
+            border: none;
+            padding: 10px 16px;
+            margin: 4px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        button:hover { background: #3f6fd3; }
+        button.danger {
+            background: #e06060;
+        }
+        button.danger:hover { background: #c24949; }
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+        #mensajes {
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px;
+            min-height: 60px;
+            font-size: 16px;
+            white-space: pre-line;
+        }
+        .error { color: #c24949; }
+    </style>
+</head>
+<body>
+    <h1>Mi página de saludos</h1>
+
+    <section>
+        <h2>Hola mundo</h2>
+        <button onclick="holaMundo()">Decir hola mundo</button>
+    </section>
+
+    <section>
+        <h2>Saludos y despedidas</h2>
+        <div>
+            <button onclick="saludar('mamá')">Saludar a mamá</button>
+            <button class="danger" onclick="despedida('mamá')">Despedir a mamá</button>
+            <button onclick="saludar('papá')">Saludar a papá</button>
+            <button class="danger" onclick="despedida('papá')">Despedir a papá</button>
+            <button onclick="saludar('hermano')">Saludar a hermano</button>
+            <button class="danger" onclick="despedida('hermano')">Despedir a hermano</button>
+            <button onclick="saludar('tía')">Saludar a tía</button>
+            <button class="danger" onclick="despedida('tía')">Despedir a tía</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>¿Cómo te llamas?</h2>
+        <input type="text" id="nombre" placeholder="Escribe tu nombre...">
+        <button onclick="saludarPersona()">Saludar</button>
+    </section>
+
+    <section>
+        <h2>Mensajes</h2>
+        <div id="mensajes"></div>
+    </section>
+
+    <script>
+        const areaMensajes = document.getElementById("mensajes");
+
+        function agregarMensaje(texto, esError = false) {
+            const linea = document.createElement("div");
+            linea.textContent = texto;
+            if (esError) {
+                linea.classList.add("error");
+            }
+            areaMensajes.appendChild(linea);
+            areaMensajes.scrollTop = areaMensajes.scrollHeight;
+        }
+
+        function holaMundo() {
+            agregarMensaje("hola mundo");
+        }
+
+        function saludar(nombre) {
+            agregarMensaje(`hola ${nombre}`);
+        }
+
+        function despedida(nombre) {
+            agregarMensaje(`adiós ${nombre}`);
+        }
+
+        function saludarPersona() {
+            const nombre = document.getElementById("nombre").value;
+            if (nombre && nombre.trim() !== "") {
+                agregarMensaje(`hola, ${nombre.trim()}`);
+            } else {
+                agregarMensaje("no escribiste ningún nombre", true);
+            }
+        }
+    </script>
+</body>
+</html>
